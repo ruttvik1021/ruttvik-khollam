@@ -117,6 +117,13 @@ export default function Component() {
     { name: "MongoDB", icon: "/mongo.png" },
   ];
 
+  const footerSkills = [
+    "ReactJs / NextJs / Angular",
+    "HTML / CSS / Tailwind",
+    "Tanstack Query / GraphQL",
+    "MongoDB",
+  ];
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -192,8 +199,8 @@ export default function Component() {
                 {item.name}
               </Link>
             ))}
-            <ThemeToggleButton />
           </div>
+          <ThemeToggleButton />
         </nav>
       </motion.header>
 
@@ -213,7 +220,7 @@ export default function Component() {
               Hello,
               <br />I Am Ruttvik Khollam.
             </motion.h1>
-            <motion.p {...fadeIn} className="text-2xl text-gray-400">
+            <motion.p {...fadeIn} className="text-2xl text-foreground">
               Full Stack Web Developer
             </motion.p>
             <motion.span {...fadeIn}>
@@ -443,7 +450,7 @@ export default function Component() {
             >
               Ruttvik Khollam
             </Link>
-            <p className="text-gray-400">
+            <p className="text-foreground">
               Full Stack Web Developer specializing in modern web technologies.
             </p>
             <div className="flex gap-4">
@@ -471,7 +478,7 @@ export default function Component() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="text-gray-400 hover:text-white transition-colors"
+                      className="text-foreground hover:text-white transition-colors"
                     >
                       {item.name}
                     </Link>
@@ -482,38 +489,18 @@ export default function Component() {
           <div>
             <h3 className="font-bold mb-4 font-cursive text-2xl">Skills</h3>
             <ul className="space-y-2">
-              <li>
-                <Link
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Frontend Development
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Backend Development
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Database Design
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  API Development
-                </Link>
-              </li>
+              {footerSkills.map((item, index) => {
+                return (
+                  <li key={index}>
+                    <Link
+                      href="#skills"
+                      className="text-foreground hover:text-white transition-colors"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <div>
@@ -523,24 +510,29 @@ export default function Component() {
             <ul className="space-y-4">
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
-                <a href="tel:+919665307459" className="text-gray-400">
+                <a href="tel:+919665307459" className="text-foreground">
                   +919665307459
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
-                <a href="mailto:rkhollam21@gmail.com" className="text-gray-400">
+                <a
+                  href="mailto:rkhollam21@gmail.com"
+                  className="text-foreground"
+                >
                   rkhollam21@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
-                <span className="text-gray-400">Pune, Maharashtra, India</span>
+                <span className="text-foreground">
+                  Pune, Maharashtra, India
+                </span>
               </li>
             </ul>
           </div>
         </div>
-        <div className="border-t border-zinc-800 mt-12 pt-6 text-center text-gray-400">
+        <div className="border-t border-zinc-800 mt-12 pt-6 text-center text-foreground">
           <p>© 2024 Portfolio. All rights reserved.</p>
         </div>
       </footer>
