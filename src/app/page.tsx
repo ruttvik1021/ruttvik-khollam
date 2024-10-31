@@ -105,9 +105,9 @@ export default function Component() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const skills = [
-    { name: "ReactJs/NextJs", icon: "/nextjs.jpg" },
+    { name: "NextJs", icon: "/nextjs.jpg" },
     { name: "TypeScript", icon: "/typescript.png" },
-    { name: "Tanstack Query", icon: "/tanstack.png" },
+    { name: "Tanstack", icon: "/tanstack.png" },
     { name: "Redux", icon: "/redux.png" },
     { name: "Git", icon: "/git.png" },
     { name: "Angular", icon: "/angular.png" },
