@@ -180,7 +180,7 @@ export default function Component() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className="container mx-auto px-4 py-6"
+        className="container mx-auto px-4 py-6 mb-3"
       >
         <nav className="flex items-center justify-between">
           <Link
