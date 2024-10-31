@@ -138,7 +138,7 @@ export default function Component() {
               className="text-5xl font-bold leading-tight font-cursive"
             >
               Hello,
-              <br />I Am Alex.
+              <br />I Am Ruttvik Khollam.
             </motion.h1>
             <motion.p {...fadeIn} className="text-xl text-gray-400">
               Full Stack Web Developer
@@ -310,34 +310,6 @@ export default function Component() {
             </Card>
           </motion.div>
           {/* Additional portfolio items */}
-          {[1, 2].map((item) => (
-            <motion.div key={item} variants={fadeIn}>
-              <Card className="bg-zinc-900 border-zinc-800 overflow-hidden group">
-                <CardContent className="p-0">
-                  <Image
-                    src="/placeholder.svg"
-                    alt={`Portfolio ${item}`}
-                    width={400}
-                    height={300}
-                    className="w-full transition-transform group-hover:scale-105"
-                  />
-                </CardContent>
-                <CardContent className="p-6">
-                  <h3 className="font-bold text-xl mb-2 font-cursive">
-                    Project Title
-                  </h3>
-                  <p className="text-gray-400">
-                    Project description goes here...
-                  </p>
-                </CardContent>
-                <CardFooter>
-                  <Button variant="link" className="px-0">
-                    View Project <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </CardFooter>
-              </Card>
-            </motion.div>
-          ))}
         </motion.div>
       </section>
 
