@@ -391,18 +391,13 @@ export default function Component() {
             </p>
             <div className="flex gap-4">
               <Button variant="ghost" size="icon" asChild>
-                <Link href="#" target="_blank">
+                <Link href="https://www.github.com/ruttvik1021" target="_blank">
                   <Github className="w-4 h-4" />
                 </Link>
               </Button>
               <Button variant="ghost" size="icon" asChild>
-                <Link href="#" target="_blank">
+                <Link href="https://www.linkedin.com/in/ruttvik1021" target="_blank">
                   <Linkedin className="w-4 h-4" />
-                </Link>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <Link href="#" target="_blank">
-                  <Twitter className="w-4 h-4" />
                 </Link>
               </Button>
             </div>
@@ -486,15 +481,15 @@ export default function Component() {
             <ul className="space-y-4">
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
-                <span className="text-gray-400">+1 234 567 890</span>
+                <span className="text-gray-400">+919665307459</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
-                <span className="text-gray-400">hello@example.com</span>
+                <span className="text-gray-400">rkhollam21@gmail.com</span>
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
-                <span className="text-gray-400">123 Street, City, Country</span>
+                <span className="text-gray-400">Pune, Maharashtra, India</span>
               </li>
             </ul>
           </div>
