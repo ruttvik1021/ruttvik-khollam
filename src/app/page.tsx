@@ -280,6 +280,7 @@ export default function Component() {
                       alt={skill.name}
                       width={100}
                       height={100}
+                      className="rounded-xl"
                     />
                   </div>
                   <h3 className="font-semibold">{skill.name}</h3>
