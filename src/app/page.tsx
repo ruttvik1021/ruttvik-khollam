@@ -533,7 +533,7 @@ export default function Component() {
           </div>
         </div>
         <div className="border-t border-zinc-800 mt-12 pt-6 text-center text-foreground">
-          <p>© 2024 Portfolio. All rights reserved.</p>
+          <p>© 2024 Ruttvik Khollam. All rights reserved.</p>
         </div>
       </footer>
     </div>
