@@ -8,15 +8,16 @@ import {
   Linkedin,
   Mail,
   MapPin,
+  Moon,
   Phone,
-  Twitter,
+  Sun,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -28,7 +29,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "../hooks/use-toast";
+import { toast } from "sonner";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -44,40 +45,119 @@ const staggerContainer = {
   },
 };
 
+const navigations = [
+  { name: "Home", href: "#" },
+  { name: "Experience", href: "#experience" },
+  { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#projects" },
+  { name: "Contact", href: "#contact" },
+];
+
+export const Theme = "theme";
+export enum Modes {
+  DARK = "dark",
+  LIGHT = "light",
+}
+
+const ThemeToggleButton = () => {
+  const getStoredTheme = (localStorage.getItem(Theme) as Modes) || null;
+  const [activeTheme, setActiveTheme] = useState<Modes | null>(getStoredTheme);
+  const htmlElement = document.documentElement;
+
+  useEffect(() => {
+    if (activeTheme) {
+      toggleTheme(activeTheme);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeTheme]);
+
+  const toggleTheme = (theme: Modes) => {
+    localStorage.setItem(Theme, theme);
+    htmlElement.classList.add(theme);
+  };
+
+  return activeTheme === Modes.DARK ? (
+    <Sun
+      onClick={() => {
+        setActiveTheme(Modes.LIGHT);
+        htmlElement.classList.remove(Modes.DARK);
+      }}
+    />
+  ) : (
+    <Moon
+      onClick={() => {
+        setActiveTheme(Modes.DARK);
+        htmlElement.classList.remove(Modes.LIGHT);
+      }}
+    />
+  );
+};
+
 export default function Component() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const { toast } = useToast();
 
   const skills = [
-    { name: "Angular", icon: "/angular.svg", color: "bg-red-500" },
-    { name: "React", icon: "/react.svg", color: "bg-blue-300" },
-    { name: "JavaScript", icon: "/javascript.svg", color: "bg-yellow-400" },
-    { name: "TypeScript", icon: "/typescript.svg", color: "bg-blue-500" },
-    { name: "Redux", icon: "/redux.svg", color: "bg-purple-500" },
-    { name: "Git", icon: "/git.svg", color: "bg-orange-500" },
-    { name: "HTML", icon: "/html.svg", color: "bg-orange-600" },
-    { name: "CSS", icon: "/css.svg", color: "bg-blue-600" },
-    { name: "Tailwind CSS", icon: "/tailwind.svg", color: "bg-teal-500" },
-    { name: "MongoDB", icon: "/mongodb.svg", color: "bg-green-500" },
+    { name: "ReactJs/NextJs", icon: "/nextjs.jpg" },
+    { name: "TypeScript", icon: "/typescript.png" },
+    { name: "Tanstack Query", icon: "/tanstack.png" },
+    { name: "Redux", icon: "/redux.png" },
+    { name: "Git", icon: "/git.png" },
+    { name: "Angular", icon: "/angular.png" },
+    { name: "HTML/CSS", icon: "/html.png" },
+    { name: "Tailwind CSS", icon: "/tailwind.png" },
+    { name: "GraphQL", icon: "/graphql.svg" },
+    { name: "MongoDB", icon: "/mongo.png" },
   ];
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Here you would typically send the form data to your backend
-    toast({
-      title: "Message Sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    });
+
+    toast.success("Thanks for reaching out. I'll get back to you soon.");
     setIsDialogOpen(false);
   };
 
+  const experience = [
+    {
+      period: "2022 - Present",
+      role: "Senior Software Engineer",
+      company: "Invimatic Technologies",
+      achievements: [
+        "Led development of critical business applications using React JS, Next JS, and TypeScript",
+        "Designed scalable architectures and optimized application performance",
+        "Implemented innovative solutions like React Query for enhanced user experience",
+        "Mentored team members and translated business requirements into technical specifications",
+        "Integrated multiple third-party APIs and utilized state management libraries",
+        "Applied modern development practices including asynchronous programming and clean code principles",
+      ],
+    },
+  ];
+
+  const sectionHeader = (title: string) => {
+    return (
+      <motion.h2
+        {...fadeIn}
+        className="text-3xl font-bold text-center mb-12 font-cursive"
+      >
+        {title}
+      </motion.h2>
+    );
+  };
+
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <style jsx global>{`
         @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&display=swap");
 
         .font-cursive {
           font-family: "Dancing Script", cursive;
+          font-weight: 600;
+        }
+        .font-devanagari {
+          font-family: "Tiro Devanagari Hindi", serif;
+          font-weight: 400;
+          font-style: italic;
+          font-size: 1.5rem;
         }
       `}</style>
       {/* Header */}
@@ -90,49 +170,34 @@ export default function Component() {
         <nav className="flex items-center justify-between">
           <Link
             href="#"
-            className="flex items-center gap-2 text-xl font-bold font-cursive"
+            className="flex items-center gap-2 text-2xl font-bold font-devanagari"
           >
-            <div className="h-8 w-8 rounded-full bg-primary"></div>
-            Portfolio
+            Ruttvik Khollam
           </Link>
           <div className="hidden md:flex items-center gap-6">
-            <Link href="#home" className="hover:text-primary transition-colors">
-              Home
-            </Link>
-            <Link
-              href="#about"
-              className="hover:text-primary transition-colors"
-            >
-              About
-            </Link>
-            <Link
-              href="#skills"
-              className="hover:text-primary transition-colors"
-            >
-              Skills
-            </Link>
-            <Link
-              href="#portfolio"
-              className="hover:text-primary transition-colors"
-            >
-              Portfolio
-            </Link>
-            <Link href="#news" className="hover:text-primary transition-colors">
-              Blog
-            </Link>
+            {navigations.map((item) => (
+              <Link
+                href={item.href}
+                key={item.href}
+                className="hover:text-primary transition-colors"
+              >
+                {item.name}
+              </Link>
+            ))}
+            <ThemeToggleButton />
           </div>
         </nav>
       </motion.header>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20">
+      <section className="container mx-auto px-4 pb-20 flex justify-center items-center h-screen">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col md:flex-row items-center gap-12"
+          className="flex flex-col-reverse md:flex-row items-center gap-12 text-center"
         >
-          <div className="flex-1 space-y-6">
+          <div className="flex-1 space-y-6 text-left">
             <motion.h1
               {...fadeIn}
               className="text-5xl font-bold leading-tight font-cursive"
@@ -140,14 +205,16 @@ export default function Component() {
               Hello,
               <br />I Am Ruttvik Khollam.
             </motion.h1>
-            <motion.p {...fadeIn} className="text-xl text-gray-400">
+            <motion.p {...fadeIn} className="text-2xl text-gray-400">
               Full Stack Web Developer
             </motion.p>
-            <motion.div {...fadeIn}>
-              <Button size="lg" className="gap-2">
-                View My Work <ArrowRight className="w-4 h-4" />
+            <motion.span {...fadeIn}>
+              <Button asChild className="mt-3">
+                <Link href="#projects">
+                  View My Work <ArrowRight className="w-4 h-4" />
+                </Link>
               </Button>
-            </motion.div>
+            </motion.span>
           </div>
           <motion.div
             className="flex-1"
@@ -156,24 +223,25 @@ export default function Component() {
             transition={{ duration: 0.8 }}
           >
             <Image
-              src="/placeholder.svg"
-              alt="Hero image"
-              width={500}
-              height={600}
-              className="rounded-lg"
+              src="/profile.jpg"
+              alt="Ruttvik Khollam"
+              width={400}
+              height={400}
+              className="rounded-full"
             />
+            <motion.p
+              {...fadeIn}
+              className="text-xl font-bold text-center my-3 font-cursive"
+            >
+              Just a Memoji holding space until my photo debut!
+            </motion.p>
           </motion.div>
         </motion.div>
       </section>
 
       {/* Skills Section */}
-      <section className="container mx-auto px-4 py-20" id="skills">
-        <motion.h2
-          {...fadeIn}
-          className="text-3xl font-bold text-center mb-12 font-cursive"
-        >
-          My Skills
-        </motion.h2>
+      <section className="container mx-auto px-4 pb-20" id="skills">
+        {sectionHeader("My Skills")}
         <motion.div
           variants={staggerContainer}
           initial="initial"
@@ -187,17 +255,16 @@ export default function Component() {
               variants={fadeIn}
               className="relative group"
             >
-              <Card className="bg-zinc-900/50 border-zinc-800 backdrop-blur-sm hover:bg-zinc-800/50 transition-colors">
+              <Card className="bg-muted backdrop-blur-sm hover:bg-muted/50 transition-colors">
                 <CardContent className="p-6 text-center">
                   <div
-                    className={`w-16 h-16 mx-auto mb-4 rounded-xl ${skill.color} flex items-center justify-center`}
+                    className={`w-16 h-16 mx-auto mb-4 rounded-xl flex items-center justify-center`}
                   >
                     <Image
                       src={skill.icon}
                       alt={skill.name}
-                      width={40}
-                      height={40}
-                      className="w-8 h-8"
+                      width={100}
+                      height={100}
                     />
                   </div>
                   <h3 className="font-semibold">{skill.name}</h3>
@@ -209,45 +276,31 @@ export default function Component() {
       </section>
 
       {/* Work Experience */}
-      <section className="container mx-auto px-4 py-20">
-        <motion.h2
-          {...fadeIn}
-          className="text-3xl font-bold text-center mb-12 font-cursive"
-        >
-          My Work Experience
-        </motion.h2>
+      <section className="container mx-auto px-4 pb-20" id="experience">
+        {sectionHeader("My Work Experience")}
         <motion.div
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="grid md:grid-cols-3 gap-6"
         >
-          {[
-            {
-              period: "2021 - Present",
-              role: "Senior Full Stack Developer",
-              company: "Tech Solutions Inc.",
-            },
-            {
-              period: "2019 - 2021",
-              role: "Frontend Developer",
-              company: "Digital Innovations",
-            },
-            {
-              period: "2018 - 2019",
-              role: "Junior Web Developer",
-              company: "StartUp Hub",
-            },
-          ].map((experience, index) => (
-            <motion.div key={index} variants={fadeIn}>
-              <Card className="bg-zinc-900 border-zinc-800 hover:bg-zinc-800/50 transition-colors">
+          {experience.map((experience, index) => (
+            <motion.div variants={fadeIn} key={index}>
+              <Card className="bg-muted transition-colors">
                 <CardContent className="pt-6">
-                  <p className="text-primary mb-2 font-cursive">
-                    {experience.period}
+                  <p className="mb-2 font-cursive text-foreground text-2xl">
+                    {experience.period} : {experience.company}
                   </p>
-                  <h3 className="text-xl font-bold mb-2">{experience.role}</h3>
-                  <p className="text-gray-400">{experience.company}</p>
+                  <h3 className="text-2xl font-bold mb-2 text-foreground">
+                    {experience.role}
+                  </h3>
+                  <ul className="list-disc pl-5 space-y-2">
+                    {experience.achievements.map((achievement, index) => (
+                      <li key={index} className="text-foreground">
+                        {achievement}
+                      </li>
+                    ))}
+                  </ul>
                 </CardContent>
               </Card>
             </motion.div>
@@ -256,25 +309,20 @@ export default function Component() {
       </section>
 
       {/* Portfolio */}
-      <section className="container mx-auto px-4 py-20">
-        <motion.h2
-          {...fadeIn}
-          className="text-3xl font-bold text-center mb-12 font-cursive"
-        >
-          Featured Projects
-        </motion.h2>
+      <section className="container mx-auto px-4 pb-20" id="projects">
+        {sectionHeader("Projects")}
         <motion.div
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="flex justify-center max-w-lg mx-auto"
         >
-          <motion.div variants={fadeIn}>
-            <Card className="bg-zinc-900 border-zinc-800 overflow-hidden group">
+          <motion.div variants={fadeIn} className="w-full md:w-auto">
+            <Card className="bg-muted overflow-hidden group">
               <CardContent className="p-0">
                 <Image
-                  src="/placeholder.svg"
+                  src="/expense-tracker.png"
                   alt="Expense Tracker"
                   width={400}
                   height={300}
@@ -282,34 +330,36 @@ export default function Component() {
                 />
               </CardContent>
               <CardContent className="p-6">
-                <h3 className="font-bold text-xl mb-2 font-cursive">
+                <h3 className="text-foreground font-bold text-2xl mb-2 font-cursive">
                   Expense Tracker
                 </h3>
-                <p className="text-gray-400 mb-4">
-                  A full-stack expense tracking application built with React,
-                  Node.js, and MongoDB. Track your expenses, create budgets, and
-                  visualize your spending patterns.
+                <p className="text-foreground mb-4">
+                  A full-featured expense tracking app built with Next.js,
+                  server actions, and MongoDB. Effortlessly track your spending,
+                  set up budgets, and get insightful visualizations of your
+                  financial patterns.
+                </p>
+                <p className="text-foreground mb-4">
+                  Try it out for free—at least until my free-tier database
+                  reaches its limit! 😉
                 </p>
                 <div className="flex gap-4">
-                  <Button asChild>
+                  <Button
+                    asChild
+                    className="bg-background text-foreground hover:bg-background/80"
+                  >
                     <Link
-                      href="https://expense-tracker-ashy-beta.vercel.app/"
+                      href="https://expense-tracker-ashy-beta.vercel.app"
                       target="_blank"
                       className="gap-2"
                     >
                       Try it out <ExternalLink className="w-4 h-4" />
                     </Link>
                   </Button>
-                  <Button variant="outline" asChild>
-                    <Link href="#feedback" className="gap-2">
-                      Give Feedback <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  </Button>
                 </div>
               </CardContent>
             </Card>
           </motion.div>
-          {/* Additional portfolio items */}
         </motion.div>
       </section>
 
@@ -318,7 +368,7 @@ export default function Component() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="bg-primary py-12"
+        className="bg-muted py-12"
       >
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -329,7 +379,7 @@ export default function Component() {
             </div>
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
-                <Button size="lg" variant="secondary">
+                <Button size="lg" variant="default">
                   Contact Now
                 </Button>
               </DialogTrigger>
@@ -381,10 +431,9 @@ export default function Component() {
           <div className="space-y-4">
             <Link
               href="#"
-              className="flex items-center gap-2 text-xl font-bold font-cursive"
+              className="flex items-center gap-2 text-2xl font-bold font-devanagari"
             >
-              <div className="h-8 w-8 rounded-full bg-primary"></div>
-              Portfolio
+              Ruttvik Khollam
             </Link>
             <p className="text-gray-400">
               Full Stack Web Developer specializing in modern web technologies.
@@ -396,51 +445,34 @@ export default function Component() {
                 </Link>
               </Button>
               <Button variant="ghost" size="icon" asChild>
-                <Link href="https://www.linkedin.com/in/ruttvik1021" target="_blank">
+                <Link
+                  href="https://www.linkedin.com/in/ruttvik1021"
+                  target="_blank"
+                >
                   <Linkedin className="w-4 h-4" />
                 </Link>
               </Button>
             </div>
           </div>
           <div>
-            <h3 className="font-bold mb-4 font-cursive">Navigation</h3>
+            <h3 className="font-bold mb-4 font-cursive text-2xl">Navigation</h3>
             <ul className="space-y-2">
-              <li>
-                <Link
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Skills
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Portfolio
-                </Link>
-              </li>
+              {navigations
+                .filter((item) => item.href !== "#contact")
+                .map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="text-gray-400 hover:text-white transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
             </ul>
           </div>
           <div>
-            <h3 className="font-bold mb-4 font-cursive">Skills</h3>
+            <h3 className="font-bold mb-4 font-cursive text-2xl">Skills</h3>
             <ul className="space-y-2">
               <li>
                 <Link
@@ -477,15 +509,21 @@ export default function Component() {
             </ul>
           </div>
           <div>
-            <h3 className="font-bold mb-4 font-cursive">Contact Info</h3>
+            <h3 className="font-bold mb-4 font-cursive text-2xl" id="contact">
+              Contact Info
+            </h3>
             <ul className="space-y-4">
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
-                <span className="text-gray-400">+919665307459</span>
+                <a href="tel:+919665307459" className="text-gray-400">
+                  +919665307459
+                </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
-                <span className="text-gray-400">rkhollam21@gmail.com</span>
+                <a href="mailto:rkhollam21@gmail.com" className="text-gray-400">
+                  rkhollam21@gmail.com
+                </a>
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
