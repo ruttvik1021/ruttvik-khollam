@@ -251,7 +251,7 @@ export default function Component() {
         >
           {skills.map((skill, index) => (
             <motion.div
-              key={skill.name}
+              key={index}
               variants={fadeIn}
               className="relative group"
             >
@@ -374,7 +374,7 @@ export default function Component() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <h2 className="text-2xl font-bold font-cursive">
-                Let's work together on your next project!
+                Let&apos;s work together on your next project!
               </h2>
             </div>
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -389,8 +389,8 @@ export default function Component() {
                     Contact Me
                   </DialogTitle>
                   <DialogDescription>
-                    Fill out the form below and I'll get back to you as soon as
-                    possible.
+                    Fill out the form below and I&apos;ll get back to you as
+                    soon as possible.
                   </DialogDescription>
                 </DialogHeader>
                 <form onSubmit={handleSubmit} className="space-y-4">
