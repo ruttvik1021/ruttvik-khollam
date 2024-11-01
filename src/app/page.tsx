@@ -241,8 +241,8 @@ export default function Component() {
             <Image
               src="/profile.jpg"
               alt="Ruttvik Khollam"
-              width={400}
-              height={400}
+              width={300}
+              height={300}
               className="rounded-full"
             />
             <motion.p
@@ -381,7 +381,7 @@ export default function Component() {
       </section>
 
       {/* Contact */}
-      <motion.section
+      {/* <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -440,7 +440,7 @@ export default function Component() {
             </Dialog>
           </div>
         </div>
-      </motion.section>
+      </motion.section> */}
 
       {/* Footer */}
       <footer className="container mx-auto px-4 py-12">
