@@ -1,18 +1,7 @@
 "use client";
-
+import ThemeToggleButton from "@/components/toggleButton";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -21,14 +10,10 @@ import {
   Linkedin,
   Mail,
   MapPin,
-  Moon,
   Phone,
-  Sun,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -52,57 +37,8 @@ const navigations = [
   { name: "Contact", href: "#contact" },
 ];
 
-const Theme = "theme";
-enum Modes {
-  DARK = "dark",
-  LIGHT = "light",
-}
-
-const ThemeToggleButton = () => {
-  const [activeTheme, setActiveTheme] = useState<Modes | null>(null);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      // Check if window is defined
-      const storedTheme = (localStorage.getItem(Theme) as Modes) || Modes.LIGHT;
-      setActiveTheme(storedTheme);
-      toggleTheme(storedTheme); // Apply the stored theme
-    }
-  }, []);
-
-  const toggleTheme = (theme: Modes) => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(Theme, theme);
-      document.documentElement.classList.toggle(
-        Modes.DARK,
-        theme === Modes.DARK
-      );
-      document.documentElement.classList.toggle(
-        Modes.LIGHT,
-        theme === Modes.LIGHT
-      );
-    }
-  };
-
-  return activeTheme === Modes.DARK ? (
-    <Sun
-      onClick={() => {
-        setActiveTheme(Modes.LIGHT);
-        toggleTheme(Modes.LIGHT);
-      }}
-    />
-  ) : (
-    <Moon
-      onClick={() => {
-        setActiveTheme(Modes.DARK);
-        toggleTheme(Modes.DARK);
-      }}
-    />
-  );
-};
-
 export default function Component() {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  // const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const skills = [
     { name: "NextJs", icon: "/nextjs.jpg" },
@@ -115,7 +51,7 @@ export default function Component() {
     { name: "Tailwind CSS", icon: "/tailwind.png" },
     // { name: "GraphQL", icon: "/graphql.svg" },
     { name: "NestJs", icon: "/nestjs.png" },
-    { name: "MongoDB", icon: "/mongo.png" }
+    { name: "MongoDB", icon: "/mongo.png" },
   ];
 
   const footerSkills = [
@@ -125,12 +61,12 @@ export default function Component() {
     "MongoDB",
   ];
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
 
-    toast.success("Thanks for reaching out. I'll get back to you soon.");
-    setIsDialogOpen(false);
-  };
+  //   toast.success("Thanks for reaching out. I'll get back to you soon.");
+  //   setIsDialogOpen(false);
+  // };
 
   const experience = [
     {
@@ -241,8 +177,8 @@ export default function Component() {
             <Image
               src="/profile.jpg"
               alt="Ruttvik Khollam"
-              width={300}
-              height={300}
+              width={350}
+              height={350}
               className="rounded-full"
             />
             <motion.p
@@ -443,7 +379,7 @@ export default function Component() {
       </motion.section> */}
 
       {/* Footer */}
-      <footer className="container mx-auto px-4 py-12">
+      <footer className="container mx-auto px-4 pt-12 pb-6">
         <div className="grid md:grid-cols-4 gap-12">
           <div className="space-y-4">
             <Link
@@ -534,7 +470,7 @@ export default function Component() {
             </ul>
           </div>
         </div>
-        <div className="border-t border-zinc-800 mt-12 pt-6 text-center text-foreground">
+        <div className="border-t border-foreground mt-12 pt-6 text-center text-foreground">
           <p>© 2024 Ruttvik Khollam. All rights reserved.</p>
         </div>
       </footer>
