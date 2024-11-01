@@ -113,8 +113,9 @@ export default function Component() {
     { name: "Angular", icon: "/angular.png" },
     { name: "HTML/CSS", icon: "/html.png" },
     { name: "Tailwind CSS", icon: "/tailwind.png" },
-    { name: "GraphQL", icon: "/graphql.svg" },
-    { name: "MongoDB", icon: "/mongo.png" },
+    // { name: "GraphQL", icon: "/graphql.svg" },
+    { name: "NestJs", icon: "/nestjs.png" },
+    { name: "MongoDB", icon: "/mongo.png" }
   ];
 
   const footerSkills = [
