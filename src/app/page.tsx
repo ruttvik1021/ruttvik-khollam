@@ -113,7 +113,7 @@ export default function Component() {
         }
       `}</style>
       {/* Header */}
-      <motion.header
+      <motion.div
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
@@ -139,7 +139,7 @@ export default function Component() {
           </div>
           <ThemeToggleButton />
         </nav>
-      </motion.header>
+      </motion.div>
 
       {/* Hero Section */}
       <section className="container mx-auto px-4 pb-20 flex justify-center items-center h-screen">
