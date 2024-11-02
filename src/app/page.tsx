@@ -117,7 +117,7 @@ export default function Component() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className="container mx-auto px-4 py-6 mb-5"
+        className="container mx-auto px-4 py-6"
       >
         <nav className="flex items-center justify-between">
           <Link
@@ -142,12 +142,12 @@ export default function Component() {
       </motion.div>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 pb-20 flex justify-center items-center h-screen">
+      <div className="container mx-auto px-4 pb-20 flex justify-center items-center h-screen">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col-reverse md:flex-row items-center gap-12 text-center mt-1"
+          className="flex flex-col-reverse md:flex-row items-center gap-12 text-center"
         >
           <div className="flex-1 space-y-6 text-left">
             <motion.h1
@@ -179,9 +179,11 @@ export default function Component() {
               alt="Ruttvik Khollam"
               width={350}
               height={350}
-              className="rounded-full"
-              
+              loading="eager"
+              sizes="(max-width: 300px) 100vw, 350px"
+              className="rounded-full object-cover w-full h-auto"
             />
+
             <motion.p
               {...fadeIn}
               className="text-xl font-bold text-center my-3 font-cursive"
@@ -190,7 +192,7 @@ export default function Component() {
             </motion.p>
           </motion.div>
         </motion.div>
-      </section>
+      </div>
 
       {/* Skills Section */}
       <section className="container mx-auto px-4 pb-20" id="skills">
