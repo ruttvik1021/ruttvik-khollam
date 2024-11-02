@@ -416,7 +416,7 @@ export default function Component() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="text-foreground hover:text-white transition-colors"
+                      className="hover:text-primary transition-colors"
                     >
                       {item.name}
                     </Link>
@@ -432,7 +432,7 @@ export default function Component() {
                   <li key={index}>
                     <Link
                       href="#skills"
-                      className="text-foreground hover:text-white transition-colors"
+                      className="hover:text-primary transition-colors"
                     >
                       {item}
                     </Link>
