@@ -57,8 +57,8 @@ export default function Component() {
   const footerSkills = [
     "ReactJs / NextJs / Angular",
     "HTML / CSS / Tailwind",
-    "Tanstack Query / GraphQL",
-    "MongoDB",
+    "NestJs / MongoDB",
+    "Tanstack",
   ];
 
   // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
