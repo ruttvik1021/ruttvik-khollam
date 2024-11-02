@@ -180,6 +180,7 @@ export default function Component() {
               width={350}
               height={350}
               className="rounded-full"
+              fill={true}
             />
             <motion.p
               {...fadeIn}
