@@ -142,7 +142,7 @@ export default function Component() {
       </motion.div>
 
       {/* Hero Section */}
-      <div className="container mx-auto px-4 pb-20 flex justify-center items-center h-screen">
+      <div className="container mx-auto px-4 pb-20 flex justify-center items-center h-screen mt-20 md:mt-1">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
