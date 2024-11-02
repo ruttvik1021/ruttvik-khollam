@@ -117,7 +117,7 @@ export default function Component() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className="container mx-auto px-4 py-6 mb-3"
+        className="container mx-auto px-4 py-6 mb-5"
       >
         <nav className="flex items-center justify-between">
           <Link
@@ -147,7 +147,7 @@ export default function Component() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col-reverse md:flex-row items-center gap-12 text-center"
+          className="flex flex-col-reverse md:flex-row items-center gap-12 text-center mt-1"
         >
           <div className="flex-1 space-y-6 text-left">
             <motion.h1
