@@ -177,8 +177,8 @@ export default function Component() {
             <Image
               src="/profile.jpg"
               alt="Ruttvik Khollam"
-              width={350}
-              height={350}
+              width={320}
+              height={320}
               className="rounded-full"
             />
             <motion.p
