@@ -28,6 +28,15 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/profile.jpg" sizes="32x32" type="image/png" />
+        <meta property="og:title" content="Ruttvik Khollam" />
+        <meta
+          property="og:description"
+          content="Personal portfolio website of Ruttvik Khollam"
+        />
+        <meta property="og:image" content="/profile.jpg" />
+        <meta property="og:url" content="https://ruttvik-khollam.vercel.app" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Ruttvik Khollam" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased mx-3 bg-background text-foreground`}
