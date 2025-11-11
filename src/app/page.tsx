@@ -310,7 +310,7 @@ export default function Component() {
             </motion.div>
           </div>
           <motion.div
-            className="flex-1"
+            className="flex justify-between"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8 }}
@@ -321,16 +321,14 @@ export default function Component() {
               width={350}
               height={350}
               loading="eager"
-              sizes="(max-width: 300px) 100vw, 350px"
-              className="rounded-full object-cover w-full h-auto"
             />
 
-            <motion.p
+            {/* <motion.p
               {...fadeIn}
               className="font-bold text-center my-3 font-devanagari"
             >
               Just a Memoji holding space until my photo debut!
-            </motion.p>
+            </motion.p> */}
           </motion.div>
         </motion.div>
       </div>
