@@ -292,9 +292,12 @@ export default function Component() {
             <motion.div className="flex flex-wrap gap-2">
               <motion.span {...fadeIn}>
                 <Button asChild className="mt-3">
-                  <Link href="/Ruttvik Khollam - Senior Software Engineer.pdf">
+                  <a
+                    href="/Ruttvik Khollam - Senior Software Engineer.pdf"
+                    download="Ruttvik_Khollam_Resume.pdf"
+                  >
                     Download my resume <DownloadIcon className="w-4 h-4" />
-                  </Link>
+                  </a>
                 </Button>
               </motion.span>
               <motion.span {...fadeIn}>
@@ -313,7 +316,7 @@ export default function Component() {
             transition={{ duration: 0.8 }}
           >
             <Image
-              src="/profile.jpg"
+              src="/profile.png"
               alt="Ruttvik Khollam"
               width={350}
               height={350}
@@ -670,7 +673,9 @@ export default function Component() {
           </div>
         </div>
         <div className="border-t border-foreground mt-12 pt-6 text-center text-foreground">
-          <p>© 2024 Ruttvik Khollam. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} Ruttvik Khollam. All rights reserved.
+          </p>
         </div>
       </footer>
     </div>
