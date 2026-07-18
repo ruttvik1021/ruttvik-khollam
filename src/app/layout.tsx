@@ -19,16 +19,12 @@ export const metadata: Metadata = {
   title: "Ruttvik Khollam — Senior Software Engineer",
   description:
     "Personal portfolio of Ruttvik Khollam, a full stack web developer building fast, accessible applications with React, Next.js, and TypeScript.",
-  icons: {
-    icon: "/profile.png",
-  },
   openGraph: {
     title: "Ruttvik Khollam — Senior Software Engineer",
     description:
       "Personal portfolio of Ruttvik Khollam, a full stack web developer building fast, accessible applications with React, Next.js, and TypeScript.",
     url: "https://ruttvik-khollam.vercel.app",
     siteName: "Ruttvik Khollam",
-    images: ["/profile.png"],
     type: "website",
   },
 };
