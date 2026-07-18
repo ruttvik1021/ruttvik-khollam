@@ -15,8 +15,22 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Ruttvik Khollam",
-  description: "Personal portfolio website of Ruttvik Khollam",
+  metadataBase: new URL("https://ruttvik-khollam.vercel.app"),
+  title: "Ruttvik Khollam — Senior Software Engineer",
+  description:
+    "Personal portfolio of Ruttvik Khollam, a full stack web developer building fast, accessible applications with React, Next.js, and TypeScript.",
+  icons: {
+    icon: "/profile.png",
+  },
+  openGraph: {
+    title: "Ruttvik Khollam — Senior Software Engineer",
+    description:
+      "Personal portfolio of Ruttvik Khollam, a full stack web developer building fast, accessible applications with React, Next.js, and TypeScript.",
+    url: "https://ruttvik-khollam.vercel.app",
+    siteName: "Ruttvik Khollam",
+    images: ["/profile.png"],
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -25,21 +39,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/profile.jpg" sizes="32x32" type="image/png" />
-        <meta property="og:title" content="Ruttvik Khollam" />
-        <meta
-          property="og:description"
-          content="Personal portfolio website of Ruttvik Khollam"
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme: dark)").matches)){document.documentElement.classList.add("dark")}}catch(e){}`,
+          }}
         />
-        <meta property="og:image" content="/profile.jpg" />
-        <meta property="og:url" content="https://ruttvik-khollam.vercel.app" />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Ruttvik Khollam" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased mx-3 bg-background text-foreground`}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans bg-background text-foreground`}
       >
         {children}
         <Toaster richColors />
